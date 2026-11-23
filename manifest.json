@@ -1,0 +1,16 @@
+{
+  "name": "Brincando comas Palavras",
+  "short_name": "Palavras",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#4f46e5",
+  "description": "Treinamento divertido de leitura rápida para o Ensino Fundamental.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
