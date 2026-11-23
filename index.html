@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0040)https://ornate-torte-fb0ca3.netlify.app/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=93b25a08-c701-486b-b5d6-5a54bc45620b
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRINCANDO COM AS PALAVRAS - PEI Profª Nazira</title>
+    <title>Brincando com as Palavras - Versão 4.0.1</title>
+    <script src="./index_files/confetti.browser.min.js.download"></script>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             --card-bg: #ffffff;
-            --text-color: #2c3e50;
-            --primary: #00897b;
-            --primary-hover: #00695c;
-            --secondary: #ffb300;
-            --accent: #ff7043;
-            --board-bg: #1b5e20;
-            --board-border: #4e342e;
-            --board-text: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --text-color: #1f2937;
+            --text-secondary: #4b5563;
+            --border-color: #e5e7eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --orange: #f97316;
         }
 
-        [data-theme="dark"] {
-            --bg-gradient: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
-            --card-bg: #2d2d2d;
-            --text-color: #e0e0e0;
-            --primary: #26a69a;
-            --primary-hover: #00897b;
-            --secondary: #ffa000;
-            --accent: #ff5722;
-            --board-bg: #0f3812;
-            --board-border: #3e2723;
-            --board-text: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.5);
+        body.dark-mode {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: #1e293b;
+            --text-color: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-color: #334155;
+            --success: #34d399;
+            --danger: #f87171;
+            --warning: #fbbf24;
+            --orange: #fb923c;
         }
 
         * {
@@ -46,742 +50,899 @@
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
             padding: 15px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 5px;
+        .container {
             width: 100%;
-            max-width: 950px;
-        }
-
-        .top-controls {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-bottom: 5px;
-        }
-
-        .icon-btn {
+            max-width: 650px;
             background: var(--card-bg);
-            border: 2px solid var(--primary);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.85rem;
-            box-shadow: 0 2px 5px var(--shadow);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            position: relative;
         }
 
-        .icon-btn:hover {
-            background: var(--primary);
-            color: #fff;
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
         }
 
         h1 {
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            color: #ff8f00;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            animation: pulseTitle 1.5s infinite alternate;
-        }
-
-        @keyframes pulseTitle {
-            0% { transform: scale(1); text-shadow: 2px 2px 6px rgba(0,0,0,0.3); }
-            100% { transform: scale(1.03); text-shadow: 0 0 15px #ffb300, 2px 2px 8px rgba(0,0,0,0.4); }
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+            flex-grow: 1;
         }
 
         .subtitle {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            margin-top: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
         }
 
-        main {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px;
-            width: 100%;
-            max-width: 950px;
-            box-shadow: 0 8px 25px var(--shadow);
+        /* DESTAQUE DA SÉRIE ESCOLHIDA NA PARTE SUPERIOR */
+        .active-grade-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: white;
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        /* TELA DE SELEÇÃO DE TURMA (1º, 2º, 3º ANO - ANOS INICIAIS) */
+        .grade-selector-screen {
             display: flex;
             flex-direction: column;
             gap: 12px;
             align-items: center;
-            position: relative;
+            padding: 10px 0;
         }
 
-        .mode-selector {
-            display: flex;
-            gap: 8px;
-            background: rgba(0,0,0,0.05);
-            padding: 5px;
+        .grade-selector-screen h2 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .grade-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
             border-radius: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .grade-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* MODOS DE JOGO */
+        .modes-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .mode-btn {
-            background: transparent;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            color: var(--text-color);
-            text-transform: uppercase;
+            padding: 9px;
             font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
         }
 
         .mode-btn.active {
             background: var(--primary);
-            color: #fff;
+            color: white;
+            border-color: var(--primary);
         }
 
+        /* PAINEL DE ESTATÍSTICAS */
         .stats-bar {
             display: flex;
-            justify-content: space-around;
-            width: 100%;
-            gap: 10px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            background: rgba(79, 70, 229, 0.05);
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 12px;
         }
 
-        .stat-card {
-            background: var(--bg-gradient);
-            border: 2px solid var(--primary);
-            padding: 6px 12px;
-            border-radius: 12px;
+        .stat-box {
             text-align: center;
             flex: 1;
-            min-width: 110px;
-            box-shadow: 0 2px 5px var(--shadow);
         }
 
-        .stat-card span {
+        .stat-box span {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
             display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            opacity: 0.8;
         }
 
-        .stat-card strong {
-            font-size: 1.1rem;
+        .stat-box strong {
+            font-size: 1rem;
             color: var(--primary);
         }
 
-        .progress-container {
+        .progress-bar-container {
             width: 100%;
-            background: rgba(0,0,0,0.1);
-            border-radius: 10px;
-            height: 10px;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
             overflow: hidden;
+            margin-bottom: 15px;
         }
 
         .progress-bar {
             height: 100%;
-            background: var(--primary);
+            background: var(--success);
             width: 0%;
             transition: width 0.3s ease;
         }
 
-        .chalkboard {
-            background-color: var(--board-bg);
-            border: 10px solid var(--board-border);
-            border-radius: 15px;
-            width: 100%;
-            min-height: 210px;
-            padding: 15px;
+        /* CARTÃO DE EXIBIÇÃO */
+        .word-card {
+            background: rgba(79, 70, 229, 0.03);
+            border: 2px dashed var(--primary);
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            min-height: 170px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
-            position: relative;
         }
 
-        .school-name {
-            font-size: 0.7rem;
-            color: #a5d6a7;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-            width: 100%;
-            font-weight: bold;
+        .school-tag {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
         }
 
-        .content-display {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            color: var(--board-text);
-            text-align: center;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        .word-display {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
             margin: 10px 0;
             word-break: break-word;
-            cursor: pointer;
-            text-transform: uppercase;
+            line-height: 1.3;
         }
 
-        .instruction {
+        .word-tip {
             font-size: 0.8rem;
-            color: #c8e6c9;
-            font-style: italic;
+            color: var(--text-secondary);
         }
 
-        .controls {
+        /* MEDALHA FLUTUANTE 45+ */
+        .badge-floating {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--warning);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: none;
+            animation: bounce 0.5s infinite alternate;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .badge-floating.active {
             display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-3px); }
+        }
+
+        /* ALERTE DE BOMBA / TEMPO */
+        .bomb-container {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 3px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--danger);
+        }
+        .bomb-container.active { display: flex; }
+        .bomb-icon { font-size: 0.9rem; animation: shake 0.3s infinite; }
+        .bomb-text { font-size: 0.75rem; font-weight: bold; color: var(--danger); }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* BOTÕES DE CONTROLE - CORES SOLICITADAS */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
+            margin-bottom: 12px;
         }
 
         .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 10px;
-            font-size: 0.95rem;
+            padding: 10px;
+            font-size: 0.85rem;
             font-weight: bold;
+            border: none;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 6px var(--shadow);
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 6px;
-            text-transform: uppercase;
+            gap: 5px;
+            color: white;
         }
 
-        .btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
+        .btn-start { background: var(--orange); grid-column: span 3; font-size: 1rem; } /* Laranja */
+        .btn-start:hover { opacity: 0.9; }
+        
+        .btn-pause { background: var(--danger); }  /* Vermelho */
+        .btn-back-nav { background: var(--warning); color: #1f2937; } /* Amarelo */
+        .btn-next-nav { background: var(--success); } /* Verde */
+
+        .btn-action { background: var(--border-color); color: var(--text-color); }
+        .btn-back-main { background: var(--text-secondary); color: white; grid-column: span 3; }
+
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            padding-top: 8px;
         }
 
-        .btn-secondary { background: #78909c; }
-        .btn-secondary:hover { background: #546e7a; }
-        .btn-accent { background: #e65100; }
-        .btn-accent:hover { background: #bf360c; }
-        .btn-pause { background: #d81b60; }
-        .btn-pause:hover { background: #ad1457; }
-
-        .modal-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
+        /* MODAL DE RESULTADOS */
+        .result-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 100;
-            border-radius: 20px;
+            z-index: 1000;
             padding: 20px;
-            text-align: center;
         }
 
-        .modal-card {
+        .result-content {
             background: var(--card-bg);
             padding: 25px;
             border-radius: 20px;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-card h2 {
-            font-size: 1.6rem;
-            color: var(--secondary);
-            text-transform: uppercase;
-        }
-
-        .modal-card p {
-            font-size: 1rem;
-            line-height: 1.4;
-        }
-
-        .modal-stats-box {
-            background: rgba(0, 137, 123, 0.1);
-            border: 2px solid var(--primary);
-            padding: 10px 15px;
-            border-radius: 10px;
             width: 100%;
-            font-weight: bold;
-            color: var(--text-color);
-            font-size: 0.95rem;
-        }
-
-        .modal-icon {
-            font-size: 3.5rem;
-        }
-
-        .modal-hint {
-            font-size: 0.75rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
-
-        footer {
+            max-width: 380px;
             text-align: center;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            opacity: 0.8;
-            width: 100%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .result-content h2 { margin-bottom: 12px; color: var(--primary); font-size: 1.3rem; }
+        .badge-rank {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
             font-weight: bold;
+            display: inline-block;
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .word-card.explode {
+            animation: explodeAnim 0.5s ease;
+            border-color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+        }
+        @keyframes explodeAnim {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); background: var(--danger); }
+            100% { transform: scale(1); }
+        }
+
+        .word-card.victory {
+            animation: victoryAnim 0.6s ease;
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        @keyframes victoryAnim {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
-<body data-theme="light">
+<body>
 
-    <header>
-        <div class="top-controls">
-            <button class="icon-btn" id="themeToggle" aria-label="Alternar Tema">🌙 Modo Escuro</button>
-            <button class="icon-btn" id="fontInc" aria-label="Aumentar Fonte">A+</button>
-            <button class="icon-btn" id="fontDec" aria-label="Diminuir Fonte">A-</button>
-        </div>
-        <h1>BRINCANDO COM AS PALAVRAS</h1>
-        <p class="subtitle">Treinamento divertido de leitura rápida</p>
-    </header>
+<div class="container">
+    <div class="top-bar">
+        <span></span>
+        <h1 id="mainTitle">Brincando com as Palavras</h1>
+        <button class="mode-btn" id="themeToggle" onclick="toggleTheme()" title="Modo Escuro/Claro">🌓</button>
+    </div>
+    <div class="subtitle" id="mainSubtitle">Treinamento de Leitura e Fluência</div>
 
-    <main>
-        <div class="mode-selector">
-            <button class="mode-btn active" id="modeSimple" onclick="setMode('simple')">Leitura Simples</button>
-            <button class="mode-btn" id="modeComplex" onclick="setMode('complex')">Leitura Complexa</button>
-            <button class="mode-btn" id="modePseudo" onclick="setMode('pseudo')">Pseudopalavras</button>
-            <button class="mode-btn" id="modePhrases" onclick="setMode('phrases')">Frases Simples</button>
+    <!-- TELA 1: SELEÇÃO DE TURMA (1º, 2º, 3º ANO - ANOS INICIAIS) -->
+    <div id="gradeSelectorScreen" class="grade-selector-screen">
+        <h2>Selecione o Ano Escolar</h2>
+        <button class="grade-btn" onclick="selectGrade(1)">📚 1º Ano (Anos Iniciais) - Precisão e Frases</button>
+        <button class="grade-btn" onclick="selectGrade(2)">📖 2º Ano (Anos Iniciais) - Dígrafos e Frases</button>
+        <button class="grade-btn" onclick="selectGrade(3)">🚀 3º Ano (Anos Iniciais) - Fluência Avançada</button>
+    </div>
+
+    <!-- TELA 2: JOGO (OCULTA ATÉ SELECIONAR A TURMA) -->
+    <div id="gameplayScreen" style="display: none;">
+        <!-- BANNER DESTAQUE DE ANOS INICIAIS -->
+        <div class="active-grade-banner" id="activeGradeBanner">📚 TREINANDO: 1º ANO DOS ANOS INICIAIS</div>
+
+        <div class="modes-container" id="modeButtons">
+            <button class="mode-btn active" onclick="setMode('simples')">Palavras Simples</button>
+            <button class="mode-btn" onclick="setMode('complexa')">Palavras Complexas</button>
+            <button class="mode-btn" onclick="setMode('pseudopalavras')">Pseudopalavras</button>
+            <button class="mode-btn" onclick="setMode('frasesSimples')">Frases Simples</button>
+            <button class="mode-btn" onclick="setMode('frasesComplexas')" style="grid-column: span 2;">Frases Complexas</button>
         </div>
 
         <div class="stats-bar">
-            <div class="stat-card">
+            <div class="stat-box">
                 <span>Tempo / Cronômetro</span>
                 <strong id="timerDisplay">60s</strong>
             </div>
-            <div class="stat-card">
-                <span>Lidas</span>
-                <strong id="scoreDisplay">0</strong>
+            <div class="stat-box">
+                <span>Contagem (Palavras)</span>
+                <strong id="readCount">0</strong>
             </div>
-            <div class="stat-card">
+            <div class="stat-box">
                 <span>Progresso</span>
-                <strong id="progressText">1 / 50</strong>
+                <strong id="progressDisplay">0 / 0</strong>
             </div>
         </div>
 
-        <div class="progress-container">
+        <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
 
-        <div class="chalkboard" role="region" aria-label="Lousa de Leitura">
-            <div class="school-name">PEI PROFª NAZIRA NAGIB JORGE MURAD RODRIGUES</div>
-            <div class="content-display" id="wordDisplay" tabindex="0" title="Clique para avançar">GATO</div>
-            <div class="instruction" id="instructionText">Clique em "Iniciar" para começar o desafio!</div>
-        </div>
-
-        <div class="controls">
-            <button class="btn btn-secondary" id="btnStart" onclick="startTimer()">▶ Iniciar</button>
-            <button class="btn btn-pause" id="btnPause" onclick="togglePause()" disabled>⏸ Pausar</button>
-            <button class="btn btn-secondary" onclick="prevItem()">◀ Voltar</button>
-            <button class="btn" onclick="nextItem()">Próxima (→)</button>
-            <button class="btn btn-accent" onclick="shuffleItems()">🔀 Misturar</button>
-            <button class="btn btn-secondary" onclick="resetProgress()">↺ Reiniciar</button>
-        </div>
-
-        <!-- MODAL DE MENSAGEM COM RESULTADOS DETALHADOS -->
-        <div class="modal-overlay" id="endModal" ondblclick="closeModal()" ontouchend="closeModal()">
-            <div class="modal-card">
-                <div class="modal-icon" id="modalIcon">🏆</div>
-                <h2 id="modalTitle">PARABÉNS!</h2>
-                <p id="modalText">Mensagem do sistema...</p>
-                <div class="modal-stats-box" id="modalStatsResult"></div>
-                <span class="modal-hint">(Dê dois cliques ou dois toques na tela para voltar)</span>
+        <div class="word-card" id="wordCard">
+            <div class="badge-floating" id="badgeFloating">🏆 META 45+ ATINGIDA!</div>
+            <div class="bomb-container" id="bombAlert">
+                <span class="bomb-icon">💣</span>
+                <span class="bomb-text" id="bombTimerText">10s</span>
             </div>
+            <div class="school-tag" id="schoolTagDisplay">PEI PROFESSORA NAZIRA NAGIB</div>
+            
+            <!-- EXIBIÇÃO DO AVISO NO LUGAR DA PALAVRA ANTES DE INICIAR -->
+            <div class="word-display" id="wordDisplay" style="font-size: 1.15rem; color: var(--warning); line-height: 1.4;">
+                ⚡ VAI COMEÇAR UMA NOVA RODADA! <br>VOCÊ PRECISA DE FOCO, ATENÇÃO E CONCENTRAÇÃO. VAMOS LÁ!
+            </div>
+            <div class="word-tip" id="wordTip">Clique em "INICIAR JOGO" para começar o desafio!</div>
         </div>
-    </main>
 
-    <footer>
-        Criado por Prof. Wagner - Brincando com as Palavras | VERSÃO 1.5.0 (25/09/2026)
-    </footer>
+        <!-- CONTROLES COM AS CORES SOLICITADAS -->
+        <div class="controls">
+            <button class="btn btn-start" onclick="startGame()">▶ INICIAR JOGO</button>
+            <button class="btn btn-pause" onclick="pauseGame()">⏸ PAUSAR</button>
+            <button class="btn btn-back-nav" onclick="prevWord()">◀ VOLTAR</button>
+            <button class="btn btn-next-nav" onclick="nextWord()">PRÓXIMA (➔)</button>
+            <button class="btn btn-action" onclick="shuffleWords()">🔀 MISTURAR</button>
+            <button class="btn btn-action" onclick="resetGame()">🔄 REINICIAR</button>
+            <button class="btn btn-back-main" onclick="backToGradeSelector()">⬅ Escolher Outro Ano</button>
+        </div>
+    </div>
 
-    <script>
-        // 1. Leitura Simples (Lista anterior da imagem)
-        const simpleList = [
-            "GATO", "CAVALO", "PRATO", "MILHO", "CARRO",
-            "PATO", "PANELA", "LIVRO", "PALHAÇO", "FERRO",
-            "BOLA", "MACACO", "TIGRE", "COELHO", "BARRACA",
-            "CASA", "BATATA", "CRAVO", "ABELHA", "BURRO",
-            "BOLO", "MENINO", "TREM", "CHAVE", "OSSO",
-            "MOLA", "CANETA", "FLOR", "CHUVA", "PÁSSARO",
-            "RATO", "SAPATO", "BLOCO", "CHINELO", "VASSOURA",
-            "SAPO", "TOMATE", "CRUZ", "GARRAFA", "TESOURA",
-            "SUCO", "PIPOCA", "GRILO", "PINHO", "BESOURO",
-            "DEDO", "TUCANO", "BRUXA", "ARANHA", "FOGUETE",
-            "LUVA", "JANELA", "PREGO", "GALINHA", "GUITARRA",
-            "VACA", "FIVELA", "VIDRO", "BANHO", "ÁRVORE",
-            "PENA", "TAPETE", "DRAGÃO", "QUEIJO", "AÇÚCAR",
-            "LATA", "BIGODE", "PLANTA", "QUIABO", "LÂMPADA",
-            "MAPA", "CABIDE", "ESTRELA", "LEQUE", "ÓCULOS"
-        ];
+    <div class="footer" id="footerInfo">
+        Criado por Professor Wagner - Brincando com as Palavras | VERSÃO 4.0.1 (11/10/2026)
+    </div>
+</div>
 
-        // 2. Leitura Complexa (Nova lista fornecida)
-        const complexList = [
-            "GALOCHA", "ISSO", "MANSO", "APAGUE", "CIDADÃO", "DÉBORA", "COMADRE", "FELIZ", "CANHOTO", "COELHO",
-            "PRAIA", "RENAN", "CORRIGIA", "ACUDIR", "GIZ", "CICLO", "SUMIÇO", "MOLDOU", "PRAZO", "ALMA",
-            "BIZARRO", "TALENTO", "LUAN", "PEDREIRO", "RAQUETE", "QUADRADO", "GUARITA", "LENTO", "BOMBEAR", "PRIMA",
-            "MÚSICA", "MALVADA", "AQUOSO", "RECLAMAR", "FLANELA", "CHAMO", "APAREÇA", "SORRISO", "AQUEÇA", "DIGITADA",
-            "FOLHETO", "CAPAZ", "DORMIU", "BICHINHO", "PIADINHA", "MALFEITA", "TOALHA", "AUTOPEÇA", "ARREMATE", "MALINHA",
-            "PARAÍBA", "BARRIGÃO", "GARI", "QUELOIDE", "BOMBINHA", "POSSUI", "POMBINHO", "AMASSE", "NOÇÃO", "MIUDINHO"
-        ];
+<!-- MODAL DE RESULTADO / CLASSIFICAÇÃO -->
+<div class="result-modal" id="resultModal">
+    <div class="result-content">
+        <h2 id="modalTitle">Fim do Desafio! ⏱</h2>
+        <p>Conseguiu ler <strong id="finalReadCount" style="font-size: 1.4rem; color: var(--success);">0</strong> palavras!</p>
+        <div class="badge-rank" id="rankBadge">Nível: Leitor Aprendiz</div>
+        <p id="rankMessage" style="font-size: 0.9rem; margin-bottom: 15px;">PARABÉNS - Mas não pare, você pode melhorar mais ainda!</p>
+        <button class="btn btn-start" style="width: 100%; justify-content: center; background: var(--orange);" onclick="closeModal()">Jogar Novamente</button>
+    </div>
+</div>
 
-        // 3. Pseudopalavras (Nova lista fornecida)
-        const pseudoList = [
-            "COFE", "GOZ", "PAPUCA", "BENACO", "FERADI", "SARAPU", "ZI", "GENO", "DICANO", "BOSI",
-            "FAL", "JABERA", "PALIFONA", "FECE", "ACAVO", "DEPAÇO", "PARLITO", "PASODA", "FECE", "ZOCA",
-            "CAFISADA", "EBECOTA", "NENI", "TRAL", "NAVO", "DABETI", "LOTADE", "MOMI", "BERRILA", "LIFER",
-            "TIVALESIM", "TEFAZA", "VEGI", "JERACE", "GOPA", "BIPASSE", "SA", "CAFIR", "BERREU", "CEI",
-            "DELAGIDO", "COFÃ", "SOBIACANA", "CEFU", "BASSURA", "CINGOFA", "DELOÇA", "SELI", "PACATE", "PEL",
-            "FITABA", "CELE", "QUIDÃ", "GIBUCA", "CASAMI", "NOREVICE", "BOTEDE", "REJATA", "ZIFÃO", "PILIU",
-            "NANOBADA", "DILHE", "CHAFURA", "JOLOTI", "GIMES", "DAGEM", "CEMINA", "ARRECE", "MERIL", "DEDOTI", "PECATI", "PIDETO"
-        ];
+<script>
+    // Código atualizado e validado em: 11/10/2026 às 15:58 - Versão 4.0.1
+    let selectedGrade = 1;
+    let currentMode = 'simples';
+    let currentList = [];
+    let currentIndex = 0;
+    let readCount = 0;
+    let timer = 60;
+    let timerInterval = null;
+    let isPlaying = false;
+    let musicInterval = null;
+    let hasReached45 = false;
 
-        // 4. Frases Simples (Substitui STAR 10)
-        const phrasesList = [
-            "O GATO CORRE NA RUA.", "A BOLA AZUL CAIU NO CHÃO.", "O SOL BRILHA NO CÉU.",
-            "A FLOR AMARELA É BONITA.", "O PATO NADA NO LAGO.", "O LIVRO TEM MUITAS HISTÓRIAS.",
-            "O CARRO ANDA BEM RÁPIDO.", "A MÃE FEZ UM BOLO GOSTOSO.", "O MENINO JOGA FUTEBOL NA ESCOLA.",
-            "A LUA ILUMINA A NOITE ESCURA."
-        ];
-
-        let currentMode = 'simple';
-        let currentIndex = 0;
-        let timer = 60;
-        let timerInterval = null;
-        let isRunning = false;
-        let isPaused = false;
-        let completedCount = 0;
-        let fontSizeScale = 1;
-        let audioCtx = null;
-        let musicInterval = null;
-        let timeElapsed = 0;
-
-        const wordDisplay = document.getElementById('wordDisplay');
-        const timerDisplay = document.getElementById('timerDisplay');
-        const scoreDisplay = document.getElementById('scoreDisplay');
-        const progressText = document.getElementById('progressText');
-        const progressBar = document.getElementById('progressBar');
-        const btnStart = document.getElementById('btnStart');
-        const btnPause = document.getElementById('btnPause');
-        const endModal = document.getElementById('endModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalText = document.getElementById('modalText');
-        const modalIcon = document.getElementById('modalIcon');
-        const modalStatsResult = document.getElementById('modalStatsResult');
-
-        function initAudio() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
+    // BANCOS DE DADOS MASSIVAMENTE AMPLIADOS (80 A 100+ ITENS)
+    const wordListsByGrade = {
+        1: {
+            simples: [
+                "GATO", "PATO", "BOLA", "CASA", "MESA", "FACA", "LUA", "RUA", "BOCA", "SELO", 
+                "FOGO", "MALA", "PANO", "PIPA", "DADO", "BOTA", "RATO", "SEDE", "FITA", "TIPO", 
+                "LIVRO", "MOTO", "GELO", "PENA", "TATO", "LATA", "FOCA", "BONÉ", "SUCO", "FOTO", 
+                "BICO", "LIXO", "VIDA", "SELVA", "LAGO", "SAPO", "RODA", "FESTA", "NAVIO", "CAIXA",
+                "LÁPIS", "MUNDO", "TERRA", "ÁGUA", "SOL", "MAR", "FLOR", "PORTA", "JANELA", "CANETA",
+                "PAPEL", "CADEIRA", "ESTRELA", "NUVEM", "CHUVA", "VENTO", "PEDRA", "AREIA", "PRAIA", "CAMPO",
+                "PISTA", "PIANO", "VIOLA", "MÚSICA", "CANTO", "DANÇA", "JOGO", "TIME", "QUADRA", "ESCOLA",
+                "TURMA", "ALUNO", "PROFESSOR", "AMIGO", "DOCE", "BOLO", "LEITE", "PEIXE", "CARNE", "ARROZ",
+                "FEIJÃO", "PASTEL", "QUEIJO", "FRANGO", "MAÇÃ", "BANANA", "PERA", "UVA", "MELÃO", "MELANCIA",
+                "LIMÃO", "ABACAXI", "MORANGO", "TOMATE", "ALFACE", "CENOURA", "BATATA", "SAPATO", "MEIA", "CALÇA"
+            ],
+            complexa: [
+                "BLUSA", "CRISTA", "FLOR", "PLUMA", "DRAGÃO", "BLOCO", "CLIMA", "GLOBO", "PRATO", "TRATOR", 
+                "PLANETA", "FLORESTA", "BLINDA", "CLASSE", "CLIQUE", "FLAUTA", "PLANTAR", "BRILHO", "CRISTAL", "DRINQUE", 
+                "FRUTAS", "GLÓRIA", "PRÍNCIPE", "TRONCO", "PLANTA", "BRISA", "CLUBE", "CRESCER", "PLACA", "PLANO", 
+                "CLÍNICA", "GLOBAL", "PRÁTICO", "TRECHO", "TROFÉU", "FLUXO", "BLUSÃO", "BRONZE", "CLAROTE", "CRUZEIRO",
+                "FLUTUAR", "GLACIAL", "PRANCHA", "TRAMPOLIM", "BLINDAGEM", "FLORIDO", "PLANÍCIE", "FLORESCER", "BRINCADEIRA", "FLORES",
+                "FRONTEIRA", "PLÁSTICO", "CLARIDADE", "BRANCO", "CRUZ", "TREZE", "PLURAL", "BLINDADO", "CRISTALINO", "FLANELA",
+                "CHAVE", "CHUVA", "CACHORRO", "ABELHA", "PALHAÇO", "ESPELHO", "ARANHA", "DINHEIRO", "CARRO", "MORRO",
+                "PASSO", "GIRASSOL", "BRASIL", "CRAVO", "GRAMA", "TREM", "ATLETA", "ÁRVORE", "VERME", "PORTA"
+            ],
+            pseudopalavras: [
+                "BAPE", "TIDU", "MOFA", "LEVA", "PALU", "GUTO", "FINA", "ZECO", "VUDA", "KÁDI",
+                "BUFATO", "MATIDU", "POVECA", "LINITE", "SECULO", "FADAME", "TUVILA", "GOTEPA", "RADINO", "MUBELA",
+                "BARTO", "PESTA", "VURCO", "TISME", "CALMO", "DOSCA", "MIRTO", "GUSTO", "TURSA", "FESPE",
+                "TANDO", "BEMBO", "MUNFA", "PINTO", "VONCO", "GULFA", "MELCO", "POLTE", "ZINTO", "FUNDA",
+                "PLAVE", "TRITO", "BLODA", "CRUFE", "FLUMI", "FRABO", "CLENO", "BROTA", "DRUVA", "GLEPO",
+                "CHUFE", "NHETA", "LHUDE", "QUIVO", "CHINO", "GUEVA", "NHOPO", "LHICA", "QUERE", "CHUBE",
+                "BLUDA", "TRISCA", "FLONGA", "PRUCO", "CLIFES", "GLUMAS", "TROLHA", "BUNFA", "FLOSCA", "DRUBIS",
+                "PLOFAS", "CLISCO", "BRUNES", "FLUGAS", "TRUPES", "GLOPAS", "PRUNFA", "BLOCAS", "CLIFAS", "DRUGAS"
+            ],
+            frasesSimples: [
+                "O GATO SUBIU NO.", "A BOLA CAIU BEM.", "O PATO NADA LÁ.", "A LUA BRILHA HOJE.", "O RATO CORRE RÁPIDO.", "O SOL AQUECE BEM.",
+                "O GATO SUBIU NO MURO.", "A BOLA CAIU NO POÇO.", "O PATO NADA NO LAGO.", "A LUA BRILHA NO CÉU.", "O RATO ROEU A ROUPA.", "O MENINO JOGA BOLA AQUI.",
+                "A CASA É MUITO BONITA.", "O SOL AQUECE A MANHÃ.", "O LIVRO É BEM LEGAL.", "A MALA AMARELA ESTÁ PRONTA.", "O CARRO AZUL PASSOU RÁPIDO.", "O PASSARINHO CANTA NA ÁRVORE.",
+                "O PEQUENO GATO BRANCO SUBIU NO MURO.", "A CRIANÇA CORREU PARA O PARQUE HOJE.", "O TRENZINHO DE FERRO PASSOU NA PONTE.", "A PROFESSORA EXPLICOU A LIÇÃO COM CARINHO.", "A BORBOLETA COLORIDA VOA NO BELO JARDIM.", "O SORVETE DE CHOCOLATE ESTÁ MUITO BOM.",
+                "A ESCOLA ABRIU AS PORTAS AOS ALUNOS DA TURMA.", "O AMIGO AJUDOU O COLEGA NA TAREFA DE CASA.", "O CACHORRINHO BRINCA FELIZ NO QUINTAL DO VIZINHO.", "A MENINA COMPROU UM DOCE GOSTOSO NA PADARIA.", "O PÁSSARO AZUL CANTA UMA CANÇÃO BEM BONITA.", "O TIO COMPROU UM LIVRO NOVO DE HISTÓRIAS."
+            ],
+            frasesComplexas: [
+                "O PEQUENO GATO BRANCO SUBIU RAPIDAMENTE NO MURO.", "A CRIANÇA CORREU PARA O PARQUE QUANDO O SOL SAIU.", "O TRENZINHO DE FERRO PASSOU CORRENDO PELA PONTE ANTIGA.", "A PROFESSORA EXPLICOU A LIÇÃO DE CASA COM PACIÊNCIA.", "O CARRO AZUL DA MINHA TIA PASSOU NA AVENIDA.", "O BOMBEIRO CORAJOSO APAGOU O FOGO COM MUITA AGILIDADE.",
+                "O GATO ESPERTÃO CAÇOU O RATO QUE ESTAVA ESCONDIDO ATRÁS.", "A ABELHA TRABALHADEIRA VOOU ATÉ A FLOR AMARELA BUSCAR NÉCTAR.", "O CACHORRINHO DO MEU VIZINHO ENTERROU UM OSSO PERTO DO MATO.", "A MENINA PEGOU SEU CHAPÉU DE PALHA PARA BRINCAR NA CHUVA.", "O PASSARINHO AZUL CANTOU UMA CANÇÃO LINDA NA MANHÃ DE PRIMAVERA.", "A COZINHEIRA PREPAROU UM BOLO DE CHOCOLATE PARA A FESTA.",
+                "O DRAGÃO VALENTE SOLTOU UMA GRANDE FLAMA DE FOGO SOBRE AS MONTANHAS.", "A PRINCESA DO REINO ENCANTADO ENCONTROU UM CRISTAL MÁGICO NA CAIXINHA.", "O ASTRONAUTA CORAJOSO VIAJOU NO FOGUETE ESPACIAL PARA EXPLORAR PLANETAS DISTANTES.", "A BRISA SUAVE DA MANHÃ MOVIMENTAVA AS FOLHAS VERDES DAS ÁRVORES CENTENÁRIAS.", "O CIENTISTA INTELIGENTE DESCOBRIU UMA FÓRMULA PARA TRANSFORMAR A ÁGUA DO MAR.", "O MACAQUINHO SAPECA PULOU DE GALHO EM GALHO COMENDO BANANA BEM DOCE.",
+                "O PEQUENO PRINCIPE CAMINHOU PELA FLORESTA ENCONTRANDO AMIGOS MUITO ESPECIAIS E LEGAIS.", "A FESTA DE ANIVERSÁRIO TEVE MUITOS DOCINHOS SABOROSOS E BRINQUEDOS PARA AS CRIANÇAS.", "O SOL DA TARDE ILUMINAVA A JANELA DA CLASSE DURANTE A NOSSA LEITURA.", "A BICICLETA VERDE ESTAVA GUARDADA COM MUITO CUIDADO DENTRO DO PRÉDIO.", "O URSO PARDO DORMIU A CALMA NOITE DE INVERNO DENTRO DA SUA CAVERNA ESCURA.", "O TREM APITOU BEM FORTE ANTES DE ENTRAR NO TÚNEL ESCURO E COMPRIDO.",
+                "A BIBLIOTECA DA ESCOLA RECEBEU VÁRIOS LIVROS NOVOS DE HISTÓRIAS INFANTIS PARA OS ESTUDANTES.", "O MECÂNICO ARRUMOU O MOTOR DO CARRO ANTIGO NA OFICINA DURANTE A MANHÃ INTEIRA.", "A ORQUESTRA TOCOU UMA MELODIA MARAVILHOSA QUE EMOCIONOU TODAS AS PESSOAS NO GRANDE TEATRO.", "O NAVIO PIRATA NAVEGOU POR MARES DISTANTES EM BUSCA DO TESOURO PERDIDO NA ILHA.", "O CIENTISTA ANALISOU CUIDADOSAMENTE OS RESULTADOS DA PESQUISA NO SEU LABORATÓRIO MODERNO.", "O PROFESSOR EXPLICOU TODAS AS TAREFAS DIFÍCEIS COM MUITA CALMA PARA OS ALUNOS."
+            ]
+        },
+        2: {
+            simples: [
+                "LIVRO", "MOTO", "GELO", "PENA", "TATO", "LATA", "FOCA", "BONÉ", "SUCO", "FOTO", 
+                "BICO", "LIXO", "VIDA", "SELVA", "LAGO", "SAPO", "RODA", "FESTA", "NAVIO", "CAIXA", 
+                "TERRA", "ÁGUA", "SOL", "MAR", "FLOR", "PORTA", "JANELA", "CANETA", "PAPEL", "CADEIRA",
+                "ESTRELA", "NUVEM", "CHUVA", "VENTO", "PEDRA", "AREIA", "PRAIA", "CAMPO", "PISTA", "PIANO",
+                "VIOLA", "MÚSICA", "CANTO", "DANÇA", "JOGO", "TIME", "QUADRA", "ESCOLA", "TURMA", "ALUNO",
+                "PROFESSOR", "AMIGO", "DOCE", "BOLO", "LEITE", "PEIXE", "CARNE", "ARROZ", "FEIJÃO", "PASTEL",
+                "QUEIJO", "FRANGO", "MAÇÃ", "BANANA", "PERA", "UVA", "MELÃO", "MELANCIA", "LIMÃO", "ABACAXI",
+                "MORANGO", "TOMATE", "ALFACE", "CENOURA", "BATATA", "SAPATO", "MEIA", "CALÇA", "CAMISA", "BLUSA",
+                "GATO", "PATO", "BOLA", "CASA", "MESA", "FACA", "LUA", "RUA", "BOCA", "SELO"
+            ],
+            complexa: [
+                "FLORESTA", "BLINDA", "CLASSE", "FLAUTA", "PLANTAR", "BRILHO", "CRISTAL", "FRUTAS", "GLÓRIA", "PRÍNCIPE", 
+                "TRONCO", "PLANTA", "BRISA", "CLUBE", "GLOBALIZAÇÃO", "TRAMA", "CLÍNICO", "FLORESTAL", "FRÁGIL", "GLORIOSO",
+                "PRATICAR", "TREMEDURA", "TROCA", "FLUIDO", "BRILHANTE", "CLERO", "CRISTALIZADO", "FLORICULTURA", "GLADIADOR", "PRATEADO",
+                "TROMBONE", "BRONZEADO", "CRUELDADE", "FLAMINGO", "GLÓBULO", "PRANCHETA", "TREMOR", "TROPICAL", "PLANTAÇÃO", "BLINDAR",
+                "CHUVA", "CHAPÉU", "CACHORRO", "CHAVE", "CHOCOLATE", "ABELHA", "PALHAÇO", "ESPELHO", "FILHA", "ALHO",
+                "ARANHA", "DINHEIRO", "MOINHO", "FOGUEIRA", "GALINHA", "CARRO", "MORRO", "TORRE", "FERRO", "PASSO",
+                "GIRASSOL", "OSSO", "TRAVESSEIRO", "ASSADO", "BRASIL", "CRAVO", "DRAGÃO", "FRASCO", "GRAMA", "PRATO"
+            ],
+            pseudopalavras: [
+                "BARTONEL", "PLASTINA", "FRISQUETA", "CALMUDO", "TRISBANO", "GLANDURA", "VOSTECO", "CLANDINO", "FLUSMARO", "PRENDITO",
+                "BLADIFUTO", "CROFTALINA", "MESTURECO", "FLABURITO", "TRISCOLUME", "PRASTIDONA", "GLESPOTUBA", "BRANCATIDO", "DRISCOLANTE", "PLENOFASTE",
+                "CIDETA", "GIVUNO", "CENUTA", "GEPONE", "COFUDA", "GATUBO", "BESONE", "MASURE", "LISONA", "FUSETO",
+                "MASSONE", "PISSURA", "RONETA", "MURILA", "FARUDO", "TERRUCO", "CORREBA", "ZARROFE", "HULOTE", "HINECO",
+                "PLOFAS", "CLISCO", "BRUNES", "FLUGAS", "TRUPES", "GLOPAS", "PRUNFA", "BLOCAS", "CLIFAS", "DRUGAS",
+                "BLINCA", "TROPAS", "GLOFIS", "PRUNES", "CLOTES", "FLUGIS", "DRABIS", "PLUNFA", "BRILIS", "CRUPIS"
+            ],
+            frasesSimples: [
+                "O PATO NADA COM SEUS FILHOTES NO LAGO.", "A CRIANÇA CORRE FELIZ NO CAMPO VERDE DA PRAÇA.", "O CAVALO CORRE MUITO RÁPIDO NA PISTA DE TERRA.", "A PROFESSORA EXPLICOU A TAREFA DE HOJE COM ATENÇÃO.", "O CARRO AZUL PASSOU RÁPIDO NA AVENIDA PRINCIPAL.",
+                "A ESTRELA BRILHA NA NOITE ESCURA E SILENCIOSA.", "O PASSARINHO CANTA NA ÁRVORE ALTA DO QUINTAL.", "A BORBOLETA COLORIDA VOA LIVREMENTE NO JARDIM FLORIDO.", "O SORVETE DE CHOCOLATE É MUITO BOM NO CALOR.", "A ESCOLA ABRIU AS PORTAS PARA RECEBER OS ALUNOS.",
+                "O GATO SUBIU NO MURO ALTO PARA VER O SOL.", "A BOLA CAIU DENTRO DO POÇO PROFUNDO.", "O RATO ROEU A ROUPA DO REI DE ROMA.", "A CASA DE MADEIRA É MUITO BONITA E ANTIGA.", "O MENINO JOGA FUTEBOL NA RUA COM OS AMIGOS.",
+                "A FITA COLORIDA ENFEITA O PACOTE DE PRESENTE.", "O LIVRO DE HISTÓRIAS É LEGAL E DIVERTIDO.", "O FOGO ESTÁ QUEIMANDO A LENHA NA LAREIRA.", "O SUCO DE LARANJA NATURAL ESTÁ BEM DOCE.", "O DADO CAIU NO NÚMERO SEIS DO TABULEIRO.",
+                "O SOL AQUECE A MANHÃ FRIA DO INVERNO.", "A MALA AMARELA ESTÁ PRONTA PARA A VIAGEM.", "O TREM PASSOU RÁPIDO PELA ESTAÇÃO.", "A FLOR AMARELA ENFEITA O VASO DA SALA.", "O VENTO FORTE DERRUBOU AS FOLHAS SECAS.",
+                "A BICICLETA VERDE ESTÁ GUARDADA NA GARAGEM.", "O CÃO FIEL DORMIU PERTO DA PORTA.", "A MAÇÃ VERMELHA ESTÁ MUITO SABOROSA.", "O TIGRE CORRE NA MATA FECHADA.", "O AMIGO AJUDOU NA TAREFA DE CASA."
+            ],
+            frasesComplexas: [
+                "O GATO ESPERTÃO CAÇOU O RATO SABIDO QUE ESTAVA ESCONDIDO ATRÁS DA TORRE.", "A ABELHA TRABALHADEIRA VOOU ATÉ A FLOR AMARELA PARA BUSCAR O NÉCTAR DOCINHO.", "O CACHORRINHO DO MEU VIZINHO ENTERROU UM OSSO GRANDE PERTO DO MATO.", "A MENINA PEGOU O SEU CHAPÉU DE PALHA E CORREU PARA BRINCAR NA CHUVA.", "O PASSARINHO AZUL CANTOU UMA CANÇÃO LINDA NA MANHÃ DE PRIMAVERA.",
+                "O BOMBEIRO CORAJOSO APAGOU O FOGO RÁPIDO COM A MANGUEIRA DE ÁGUA.", "A COZINHEIRA PREPAROU UM BOLO DE CHOCOLATE PARA A FESTA DA ESCOLA.", "O MACAQUINHO SAPECA PULOU DE GALHO EM GALHO COMENDO BANANA DOCE.", "A BORBOLETA AZUL POUSOU NA FLOR VERMELHA ENQUANTO O SOL BRILHAVA.", "O TREM APITOU FORTE ANTES DE ENTRAR NO TÚNEL ESCURO E COMPRIDO.",
+                "O DRAGÃO VALENTE SOLTOU UMA GRANDE FLAMA DE FOGO SOBRE AS MONTANHAS NEVADAS.", "A PRINCESA DO REINO ENCANTADO ENCONTROU UM CRISTAL MÁGICO NA CAIXINHA DE OURO.", "O ASTRONAUTA CORAJOSO VIAJOU NO FOGUETE ESPACIAL PARA EXPLORAR PLANETAS DISTANTES.", "A BRISA SUAVE DA MANHÃ MOVIMENTAVA AS FOLHAS VERDES DAS ÁRVORES CENTENÁRIAS.", "O CIENTISTA INTELIGENTE DESCOBRIU UMA FÓRMULA PARA TRANSFORMAR A ÁGUA DO MAR.",
+                "A BIBLIOTECA DA CIDADE RECEBEU VÁRIOS LIVROS NOVOS DE HISTÓRIAS INFANTIS.", "O MECÂNICO ARRUMOU O MOTOR DO CARRO ANTIGO NA OFICINA DA ESQUINA.", "A ORQUESTRA TOCOU UMA MELODIA MARAVILHOSA QUE EMOCIONOU A TODAS AS PESSOAS.", "O NAVIO PIRATA NAVEGOU POR MARES DISTANTES EM BUSCA DO TESOURO PERDIDO.", "O CIENTISTA ANALISOU CUIDADOSAMENTE OS RESULTADOS DA PESQUISA NO LABORATÓRIO.",
+                "O PEQUENO PRINCIPE CAMINHOU PELA FLORESTA ENCONTRANDO AMIGOS MUITO ESPECIAIS.", "A FESTA DE ANIVERSÁRIO TEVE MUITOS DOCINHOS SABOROSOS PARA AS CRIANÇAS.", "O SOL DA TARDE ILUMINAVA A JANELA DA CLASSE DURANTE A LEITURA.", "A BICICLETA VERDE ESTAVA GUARDADA COM MUITO CUIDADO NA GARAGEM.", "O URSO PARDO DORMIU A CALMA NOITE DE INVERNO DENTRO DA CAVERNA.",
+                "O PROFESSOR EXPLICOU TODAS AS TAREFAS DIFÍCEIS COM MUITA CALMA.", "A CRIANÇA FELIZ CORREU PARA ABRAÇAR A SUA MÃE QUANDO CHEGOU.", "O CACHORRINHO MARROM ABANOU O RABO AO VER O SEU DONO.", "O SOL BRILHAVA NO CÉU AZUL ENQUANTO OS PÁSSAROS VOAVAM.", "A ESTRELA GUIA ILUMINOU O CAMINHO DOS VIAJANTES NAQUELA NOITE."
+            ]
+        },
+        3: {
+            simples: [
+                "LÁPIS", "MUNDO", "TERRA", "ÁGUA", "SOL", "MAR", "FLOR", "PORTA", "JANELA", "CANETA", 
+                "PAPEL", "CADEIRA", "ESTRELA", "NUVEM", "CHUVA", "VENTO", "PEDRA", "AREIA", "PRAIA", "CAMPO", 
+                "GATO", "PATO", "BOLA", "CASA", "MESA", "FACA", "LUA", "RUA", "BOCA", "SELO",
+                "LIVRO", "MOTO", "GELO", "PENA", "TATO", "LATA", "FOCA", "BONÉ", "SUCO", "FOTO",
+                "BICO", "LIXO", "VIDA", "SELVA", "LAGO", "SAPO", "RODA", "FESTA", "NAVIO", "CAIXA",
+                "PISTA", "PIANO", "VIOLA", "MÚSICA", "CANTO", "DANÇA", "JOGO", "TIME", "QUADRA", "ESCOLA",
+                "TURMA", "ALUNO", "PROFESSOR", "AMIGO", "DOCE", "BOLO", "LEITE", "PEIXE", "CARNE", "ARROZ",
+                "FEIJÃO", "PASTEL", "QUEIJO", "FRANGO", "MAÇÃ", "BANANA", "PERA", "UVA", "MELÃO", "MELANCIA"
+            ],
+            complexa: [
+                "GLOBALIZAÇÃO", "TRAMA", "CLÍNICO", "FLORESTAL", "FRÁGIL", "GLORIOSO", "PRATICAR", "TREMEDURA", "TROCA", "FLUIDO", 
+                "BRILHANTE", "CLERO", "CRISTALIZADO", "FLORICULTURA", "GLADIADOR", "FLORESTA", "BLINDA", "CLASSE", "FLAUTA", "PLANTAR",
+                "BLUSA", "CRISTA", "FLOR", "PLUMA", "DRAGÃO", "BLOCO", "CLIMA", "GLOBO", "PRATO", "TRATOR",
+                "PLANETA", "BLINDAGEM", "FLORIDO", "PLANÍCIE", "FLORESCER", "BRINCADEIRA", "FLORES", "FRONTEIRA", "PLÁSTICO", "CLARIDADE",
+                "CHAVE", "CHUVA", "CACHORRO", "ABELHA", "PALHAÇO", "ESPELHO", "ARANHA", "DINHEIRO", "CARRO", "MORRO",
+                "PASSO", "GIRASSOL", "BRASIL", "CRAVO", "GRAMA", "TREM", "ATLETA", "ÁRVORE", "VERME", "PORTA",
+                "BALDE", "ANEL", "FUNIL", "SOL", "BOLSA", "FESTA", "ISCA", "OSTRA", "USINA", "DENTE"
+            ],
+            pseudopalavras: [
+                "FRASQUETILOPE", "CLANDESTURONA", "BLANTIFURÁCIO", "DRISCOMILANTE", "PLENOSTREFADO", "GLESPOTICÁRIO", "TRISBOLANDINA", "FLABUROSTICO", "PRENDITOFONTE", "VOSTECALINA",
+                "CROFTALAMENTE", "PRASTIDOBURA", "MESTURIFANTE", "BRANCATIDONA", "SLEIFORUNCHO", "GLANDURISSONE", "CRANHAROFITE", "QUISPROLATINO", "BROCATUBANO", "FLAUTIRMAMENTE",
+                "PACTONE", "RAPTURO", "NAFTILA", "DIGNETO", "AMNECO", "RITMARO", "ABSURA", "ADVEco".toUpperCase(), "OBTUDE", "CACTURA",
+                "GNOMITE", "NIPCIAL", "SUBFADO", "TEPNOS", "AFTORA", "OBSTINA", "TEGNAL", "DAPNICO", "CAPFONA", "AGNUTO",
+                "XAFUME", "EXODITE", "FLAXINA", "NEXUTO", "TAXMIRA", "BOXCREFE", "LEXIDRA", "BLINCA", "TROPAS", "GLOFIS",
+                "PRUNES", "CLOTES", "FLUGIS", "DRABIS", "PLUNFA", "BRILIS", "CRUPIS", "BLOTAS", "TRUPIS", "GLUFIN"
+            ],
+            frasesSimples: [
+                "O AMIGO AJUDOU O COLEGA NA TAREFA DE MATEMÁTICA.", "O SOL BRILHA FORTE NO INÍCIO DA TARDE DE VERÃO.", "A FLOR AMARELA ENFEITA O VASO DA SALA DE AULA.", "O TIGRE CORRE RAPIDAMENTE NA MATA FECHADA E ESCURA.", "A CRIANÇA PEDIU UM COPO DE ÁGUA BEM GELADA.",
+                "O TREM PASSOU RAPIDAMENTE PELA ESTAÇÃO FERROVIÁRIA ANTIGA.", "A PROFESSORA ORGANIZOU TODOS OS LIVROS NA ESTANTE.", "O CÃO FIEL DORMIU PERTO DA PORTA DE ENTRADA DA CASA.", "A MAÇÃ VERMELHA ESTÁ MUITO DOCE E SABOROSA PARA O LANCHE.", "O VENTO FORTE DERRUBOU AS FOLHAS SECAS DA ÁRVORE.",
+                "A BICICLETA VERDE ESTÁ SEGURA E GUARDADA NA GARAGEM.", "O GATO SUBIU NO MURO ALTO PARA VER O SOL.", "A BOLA CAIU DENTRO DO POÇO PROFUNDO.", "O RATO ROEU A ROUPA DO REI DE ROMA.", "A CASA DE MADEIRA É MUITO BONITA E ANTIGA.",
+                "O MENINO JOGA FUTEBOL NA RUA COM OS AMIGOS.", "A FITA COLORIDA ENFEITA O PACOTE DE PRESENTE.", "O LIVRO DE HISTÓRIAS É LEGAL E DIVERTIDO.", "O FOGO ESTÁ QUEIMANDO A LENHA NA LAREIRA.", "O SUCO DE LARANJA NATURAL ESTÁ BEM DOCE.",
+                "O DADO CAIU NO NÚMERO SEIS DO TABULEIRO.", "O SOL AQUECE A MANHÃ FRIA DO INVERNO.", "O PATO NADA COM SEUS FILHOTES NO LAGO.", "A CRIANÇA CORRE FELIZ NO CAMPO VERDE.", "O CAVALO CORRE MUITO RÁPIDO NA PISTA.",
+                "A ESTRELA BRILHA NA NOITE ESCURA.", "O PASSARINHO CANTA NA ÁRVORE ALTA.", "A BORBOLETA COLORIDA VOA NO JARDIM.", "O SORVETE DE CHOCOLATE É MUITO BOM.", "A ESCOLA ABRIU AS PORTAS PARA OS ALUNOS."
+            ],
+            frasesComplexas: [
+                "O DRAGÃO VALENTE SOLTOU UMA GRANDE FLAMA DE FOGO ENQUANTO VOOVALVA SOBRE AS MONTANHAS NEVADAS.", "A PRINCESA DO REINO ENCANTADO ENCONTROU UM CRISTAL MÁGICO ESCONDIDO DENTRO DA CAIXINHA DE OURO.", "O ASTRONAUTA CORAJOSO VIAJOU NO FOGUETE ESPACIAL PARA EXPLORAR PLANETAS DISTANTES E DESCONHECIDOS.", "A BRISA SUAVE DA MANHÃ MOVIMENTAVA AS FOLHAS VERDES DAS ÁRVORES CENTENÁRIAS DA FLORESTA.", "O CIENTISTA INTELIGENTE DESCOBRIU UMA FÓRMULA INCRÍVEL PARA TRANSFORMAR A ÁGUA DO MAR EM ÁGUA PURA.",
+                "A BIBLIOTECA DA CIDADE RECEBEU VÁRIOS LIVROS NOVOS DE HISTÓRIAS INFANTIS PARA OS ESTUDANTES.", "O MECÂNICO ARRUMOU O MOTOR DO CARRO ANTIGO NA OFICINA DURANTE A MANHÃ INTEIRA.", "A ORQUESTRA TOCOU UMA MELODIA MARAVILHOSA QUE EMOCIONOU TODAS AS PESSOAS PRESENTES NO TEATRO.", "O NAVIO PIRATA NAVEGOU POR MARES DISTANTES EM BUSCA DO TESOURO PERDIDO NA ILHA.", "O CIENTISTA ANALISOU CUIDADOSAMENTE OS RESULTADOS DA PESQUISA NO SEU LABORATÓRIO MODERNO.",
+                "O GATO ESPERTÃO CAÇOU O RATO SABIDO QUE ESTAVA ESCONDIDO ATRÁS DA TORRE.", "A ABELHA TRABALHADEIRA VOOU ATÉ A FLOR AMARELA PARA BUSCAR O NÉCTAR DOCINHO.", "O CACHORRINHO DO MEU VIZINHO ENTERROU UM OSSO GRANDE PERTO DO MATO.", "A MENINA PEGOU O SEU CHAPÉU DE PALHA E CORREU PARA BRINCAR NA CHUVA.", "O PASSARINHO AZUL CANTOU UMA CANÇÃO LINDA NA MANHÃ DE PRIMAVERA.",
+                "O BOMBEIRO CORAJOSO APAGOU O FOGO RÁPIDO COM A MANGUEIRA DE ÁGUA.", "A COZINHEIRA PREPAROU UM BOLO DE CHOCOLATE PARA A FESTA DA ESCOLA.", "O MACAQUINHO SAPECA PULOU DE GALHO EM GALHO COMENDO BANANA DOCE.", "A BORBOLETA AZUL POUSOU NA FLOR VERMELHA ENQUANTO O SOL BRILHAVA.", "O TREM APITOU FORTE ANTES DE ENTRAR NO TÚNEL ESCURO E COMPRIDO.",
+                "O PEQUENO PRINCIPE CAMINHOU PELA FLORESTA ENCONTRANDO AMIGOS MUITO ESPECIAIS E LEGAIS.", "A FESTA DE ANIVERSÁRIO TEVE MUITOS DOCINHOS SABOROSOS E BRINQUEDOS PARA AS CRIANÇAS.", "O SOL DA TARDE ILUMINAVA A JANELA DA CLASSE DURANTE A NOSSA LEITURA.", "A BICICLETA VERDE ESTAVA GUARDADA COM MUITO CUIDADO DENTRO DA GARAGEM DO PRÉDIO.", "O URSO PARDO DORMIU A CALMA NOITE DE INVERNO DENTRO DA SUA CAVERNA.",
+                "O PROFESSOR EXPLICOU TODAS AS TAREFAS DIFÍCEIS COM MUITA CALMA PARA OS ALUNOS.", "A CRIANÇA FELIZ CORREU PARA ABRAÇAR A SUA MÃE QUANDO CHEGOU DA ESCOLA.", "O CACHORRINHO MARROM ABANOU O RABO AO VER O SEU DONO CHEGAR.", "O SOL BRILHAVA NO CÉU AZUL ENQUANTO OS PÁSSAROS VOAVAM LIVREMENTE.", "O ESTRELA GUIA ILUMINOU O CAMINHO DOS VIAJANTES NAQUELA NOITE ESCURA."
+            ]
         }
+    };
 
-        function playTone(freq, duration, type = 'sine', gainVal = 0.1) {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playBeep(frequency, duration, type = 'sine', volumeMultiplier = 1.8) {
+        try {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.value = frequency;
+            gain.gain.setValueAtTime(0.35 * volumeMultiplier, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        } catch(e) {}
+    }
+
+    function playRealExplosion() {
+        try {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.8);
+            gain.gain.setValueAtTime(0.8, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.8);
+        } catch(e) {}
+    }
+
+    function playVictorySound() {
+        try {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const notes = [523.25, 659.25, 783.99, 1046.50]; 
+            notes.forEach((freq, index) => {
+                setTimeout(() => { playBeep(freq, 0.3, 'triangle', 2.0); }, index * 120);
+            });
+        } catch(e) {}
+    }
+
+    function startBackgroundMusic() {
+        if (musicInterval) clearInterval(musicInterval);
+        const notes = [261.63, 329.63, 392.00, 523.25];
+        let noteIdx = 0;
+        musicInterval = setInterval(() => {
+            if (!isPlaying) return;
             try {
-                initAudio();
-                if(audioCtx.state === 'suspended') audioCtx.resume();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
-                osc.type = type;
-                osc.frequency.value = freq;
-                gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+                osc.type = 'triangle';
+                osc.frequency.value = notes[noteIdx];
+                noteIdx = (noteIdx + 1) % notes.length;
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 osc.start();
-                osc.stop(audioCtx.currentTime + duration);
+                osc.stop(audioCtx.currentTime + 0.4);
             } catch(e) {}
-        }
+        }, 600);
+    }
 
-        function playTickSound() {
-            playTone(880, 0.08, 'triangle', 0.15);
-        }
-
-        function playExplosionSound() {
-            try {
-                initAudio();
-                const bufferSize = audioCtx.sampleRate * 0.8;
-                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-                const data = buffer.getChannelData(0);
-                for (let i = 0; i < bufferSize; i++) {
-                    data[i] = Math.random() * 2 - 1;
-                }
-                const noise = audioCtx.createBufferSource();
-                noise.buffer = buffer;
-                const filter = audioCtx.createBiquadFilter();
-                filter.type = 'lowpass';
-                filter.frequency.setValueAtTime(300, audioCtx.currentTime);
-                filter.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.8);
-                const gain = audioCtx.createGain();
-                gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
-                noise.connect(filter);
-                filter.connect(gain);
-                gain.connect(audioCtx.destination);
-                noise.start();
-            } catch(e) {}
-        }
-
-        function startInstrumentalMusic() {
-            const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63];
-            let noteIndex = 0;
-            musicInterval = setInterval(() => {
-                if (!isRunning || isPaused) return;
-                playTone(notes[noteIndex], 0.3, 'sine', 0.04);
-                noteIndex = (noteIndex + 1) % notes.length;
-            }, 1200);
-        }
-
-        function stopInstrumentalMusic() {
+    function stopBackgroundMusic() {
+        if (musicInterval) {
             clearInterval(musicInterval);
+            musicInterval = null;
+        }
+    }
+
+    function selectGrade(grade) {
+        selectedGrade = grade;
+        document.getElementById('gradeSelectorScreen').style.display = 'none';
+        document.getElementById('gameplayScreen').style.display = 'block';
+        
+        document.getElementById('activeGradeBanner').textContent = `📚 TREINANDO: ${grade}º ANO DOS ANOS INICIAIS`;
+        document.getElementById('schoolTagDisplay').textContent = `PEI PROFESSORA NAZIRA NAGIB - ${grade}º ANO`;
+        
+        resetGame();
+    }
+
+    function backToGradeSelector() {
+        pauseGame();
+        document.getElementById('gameplayScreen').style.display = 'none';
+        document.getElementById('gradeSelectorScreen').style.display = 'flex';
+    }
+
+    function setMode(mode) {
+        currentMode = mode;
+        document.querySelectorAll('.modes-container .mode-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        resetGame();
+    }
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function updateDisplay() {
+        const wordDisplayEl = document.getElementById('wordDisplay');
+        const wordTipEl = document.getElementById('wordTip');
+
+        if (!isPlaying && currentIndex === 0 && timer === 60) {
+            // Mensagem de aviso e foco no lugar exato da palavra antes de iniciar
+            wordDisplayEl.style.fontSize = "1.15rem";
+            wordDisplayEl.style.color = "var(--orange)";
+            wordDisplayEl.innerHTML = "⚡ VAI COMEÇAR UMA NOVA RODADA! ⚡<br><br>VOCÊ PRECISA DE FOCO, ATENÇÃO E CONCENTRAÇÃO. VAMOS LÁ!";
+            wordTipEl.textContent = "Clique em \"INICIAR JOGO\" para começar o desafio!";
+        } else {
+            // Exibição normal durante o jogo (na cor azul padrão)
+            wordDisplayEl.style.fontSize = "1.4rem";
+            wordDisplayEl.style.color = "var(--primary)";
+            wordDisplayEl.textContent = currentList[currentIndex];
+            wordTipEl.textContent = "Leia com atenção e clique em PRÓXIMA";
         }
 
-        function getCurrentList() {
-            if (currentMode === 'simple') return simpleList;
-            if (currentMode === 'complex') return complexList;
-            if (currentMode === 'pseudo') return pseudoList;
-            return phrasesList;
+        document.getElementById('readCount').textContent = readCount;
+        document.getElementById('progressDisplay').textContent = `${currentIndex + 1} / ${currentList.length}`;
+        
+        const progressPercent = ((currentIndex + 1) / currentList.length) * 100;
+        document.getElementById('progressBar').style.width = `${progressPercent}%`;
+        document.getElementById('timerDisplay').textContent = `${timer}s`;
+
+        const bombAlert = document.getElementById('bombAlert');
+        const bombTimerText = document.getElementById('bombTimerText');
+        
+        if (timer <= 10 && timer > 0 && isPlaying) {
+            bombAlert.classList.add('active');
+            bombTimerText.textContent = `${timer}s`;
+            playBeep(600, 0.1, 'triangle', 1.8); 
+        } else {
+            bombAlert.classList.remove('active');
         }
 
-        function updateView() {
-            const list = getCurrentList();
-            if (currentIndex >= list.length) {
-                triggerVictory();
-                return;
+        if (readCount >= 45 && !hasReached45) {
+            hasReached45 = true;
+            document.getElementById('badgeFloating').classList.add('active');
+            playVictorySound();
+            confetti({ particleCount: 80, spread: 70, origin: { y: 0.5 } });
+        }
+    }
+
+    function startGame() {
+        if (isPlaying) return;
+        isPlaying = true;
+        playBeep(440, 0.15); 
+        startBackgroundMusic();
+        updateDisplay(); // Remove a mensagem de aviso e mostra a primeira palavra/frase
+
+        timerInterval = setInterval(() => {
+            timer--;
+            updateDisplay();
+
+            if (timer <= 0) {
+                clearInterval(timerInterval);
+                isPlaying = false;
+                stopBackgroundMusic();
+                
+                const card = document.getElementById('wordCard');
+                card.classList.add('explode');
+                playRealExplosion(); 
+
+                setTimeout(() => {
+                    card.classList.remove('explode');
+                    showResults(false); 
+                }, 600);
             }
-            if (currentIndex < 0) currentIndex = list.length - 1;
+        }, 1000);
+    }
 
-            wordDisplay.textContent = list[currentIndex];
-            progressText.textContent = `${currentIndex + 1} / ${list.length}`;
-            progressBar.style.width = `${((currentIndex + 1) / list.length) * 100}%`;
+    function pauseGame() {
+        isPlaying = false;
+        clearInterval(timerInterval);
+        stopBackgroundMusic();
+        playBeep(300, 0.1);
+        document.getElementById('bombAlert').classList.remove('active');
+    }
+
+    function nextWord() {
+        if (!isPlaying) return; // Só avança se o jogo estiver rodando
+
+        let currentItem = currentList[currentIndex];
+        let wordIncrement = 1;
+        if (currentMode === 'frasesSimples' || currentMode === 'frasesComplexas') {
+            wordIncrement = currentItem.trim().split(/\s+/).length;
         }
 
-        function setMode(mode) {
-            currentMode = mode;
-            currentIndex = 0;
-            document.getElementById('modeSimple').classList.toggle('active', mode === 'simple');
-            document.getElementById('modeComplex').classList.toggle('active', mode === 'complex');
-            document.getElementById('modePseudo').classList.toggle('active', mode === 'pseudo');
-            document.getElementById('modePhrases').classList.toggle('active', mode === 'phrases');
-            updateView();
-        }
-
-        function nextItem() {
-            if (!isRunning || isPaused) return;
-            completedCount++;
-            scoreDisplay.textContent = completedCount;
+        if (currentIndex < currentList.length - 1) {
             currentIndex++;
-            updateView();
-        }
-
-        function prevItem() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateView();
-            }
-        }
-
-        function shuffleItems() {
-            const list = getCurrentList();
-            for (let i = list.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [list[i], list[j]] = [list[j], list[i]];
-            }
-            currentIndex = 0;
-            updateView();
-        }
-
-        function startTimer() {
-            if (isRunning) return;
-            initAudio();
-            isRunning = true;
-            isPaused = false;
-            timer = 60;
-            timeElapsed = 0;
-            completedCount = 0;
-            scoreDisplay.textContent = completedCount;
-            currentIndex = 0;
-            updateView();
-
-            btnStart.textContent = "⏱️ Rodando...";
-            btnStart.disabled = true;
-            btnPause.disabled = false;
-            btnPause.textContent = "⏸ Pausar";
-
-            startInstrumentalMusic();
-
-            timerInterval = setInterval(() => {
-                if (isPaused) return;
-                timer--;
-                timeElapsed++;
-                timerDisplay.textContent = `${timer}s`;
-
-                if (timer <= 10 && timer > 0) {
-                    playTickSound();
-                }
-
-                if (timer <= 0) {
-                    clearInterval(timerInterval);
-                    stopInstrumentalMusic();
-                    playExplosionSound();
-                    triggerGameOver();
-                }
-            }, 1000);
-        }
-
-        function togglePause() {
-            if (!isRunning) return;
-            isPaused = !isPaused;
-            if (isPaused) {
-                btnPause.textContent = "▶ Retomar";
-                stopInstrumentalMusic();
-            } else {
-                btnPause.textContent = "⏸ Pausar";
-                startInstrumentalMusic();
-            }
-        }
-
-        function calculateTotalLettersRead() {
-            const list = getCurrentList();
-            let totalChars = 0;
-            const itemsRead = Math.min(completedCount, list.length);
-            for(let i = 0; i < itemsRead; i++) {
-                if(currentMode === 'phrases') {
-                    totalChars += list[i].replace(/\s/g, '').length;
-                } else {
-                    totalChars += list[i].length;
-                }
-            }
-            return totalChars;
-        }
-
-        function triggerVictory() {
+            readCount += wordIncrement;
+            playBeep(550, 0.08);
+            updateDisplay();
+        } else {
+            readCount += wordIncrement;
+            isPlaying = false;
+            stopBackgroundMusic();
             clearInterval(timerInterval);
-            stopInstrumentalMusic();
-            isRunning = false;
-            btnStart.textContent = "▶ Iniciar";
-            btnStart.disabled = false;
-            btnPause.disabled = true;
+            document.getElementById('bombAlert').classList.remove('active');
 
-            modalIcon.textContent = "🥇";
-            modalTitle.textContent = "SUPER VENCEDOR - PARABÉNS!";
-            modalText.textContent = "Você se esforçou ao máximo e teve o seu resultado merecido! Leitura concluída com sucesso absoluto!";
-            
-            if(currentMode === 'phrases') {
-                const totalLetters = calculateTotalLettersRead();
-                modalStatsResult.innerHTML = `⏱️ Tempo Gasto: ${timeElapsed} segundos<br>📜 Frases Lidas: ${completedCount}<br>🔤 Total de Letras Lidas: ${totalLetters}`;
+            const card = document.getElementById('wordCard');
+            card.classList.add('victory');
+            playVictorySound();
+
+            confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+
+            setTimeout(() => {
+                card.classList.remove('victory');
+                showResults(true); 
+            }, 800);
+        }
+    }
+
+    function prevWord() {
+        if (!isPlaying || currentIndex === 0) return;
+
+        let currentItem = currentList[currentIndex];
+        let wordDecrement = 1;
+        if (currentMode === 'frasesSimples' || currentMode === 'frasesComplexas') {
+            wordDecrement = currentItem.trim().split(/\s+/).length;
+        }
+
+        currentIndex--;
+        if (readCount >= wordDecrement) readCount -= wordDecrement;
+        playBeep(350, 0.08);
+        updateDisplay();
+    }
+
+    function shuffleWords() {
+        let rawList = wordListsByGrade[selectedGrade][currentMode];
+        currentList = shuffleArray(rawList);
+        currentIndex = 0;
+        readCount = 0;
+        hasReached45 = false;
+        document.getElementById('badgeFloating').classList.remove('active');
+        playBeep(500, 0.15);
+        updateDisplay();
+    }
+
+    function resetGame() {
+        pauseGame();
+        timer = 60;
+        hasReached45 = false;
+        document.getElementById('badgeFloating').classList.remove('active');
+        shuffleWords();
+    }
+
+    function showResults(isVictory) {
+        document.getElementById('finalReadCount').textContent = readCount;
+        let titleEl = document.getElementById('modalTitle');
+        let rank = "";
+
+        if (isVictory) {
+            titleEl.textContent = "Parabéns! Desafio Concluído! 🏆🎉";
+            rank = "🌟 Campeão da Leitura Rápida!";
+        } else {
+            titleEl.textContent = "Fim do Tempo! ⏱️💥";
+            if (readCount <= 15) {
+                rank = "🥉 Nível 1: Leitor Iniciante";
+            } else if (readCount <= 30) {
+                rank = "🥈 Nível 2: Leitor Aprendiz Ágil";
+            } else if (readCount < 45) {
+                rank = "🥇 Nível 3: Mestre da Leitura Rápida";
             } else {
-                modalStatsResult.innerHTML = `⏱️ Tempo Gasto: ${timeElapsed} segundos<br>📚 Total de Itens Lidos: ${completedCount}`;
+                rank = "🏆 Nível 4: Lenda do Vocabulário e Fluência";
             }
-
-            endModal.style.display = "flex";
         }
 
-        function triggerGameOver() {
-            isRunning = false;
-            btnStart.textContent = "▶ Iniciar";
-            btnStart.disabled = false;
-            btnPause.disabled = true;
+        document.getElementById('rankBadge').textContent = rank;
+        document.getElementById('resultModal').style.display = 'flex';
+    }
 
-            modalIcon.textContent = "🏆";
-            modalTitle.textContent = "QUASE LÁ! CONTINUE TREINANDO!";
-            modalText.textContent = "Parabéns pela tentativa! Volte a treinar, leia com mais segurança, preste atenção, tenha FOCO e DEDICAÇÃO que você vai conseguir melhorar muito na próxima vez!";
-            
-            const list = getCurrentList();
-            if(currentMode === 'phrases') {
-                const totalLetters = calculateTotalLettersRead();
-                modalStatsResult.innerHTML = `⏱️ Tempo Esgotado (60s)<br>📜 Frases Lidas: ${completedCount} de ${list.length}<br>🔤 Total de Letras Lidas: ${totalLetters}`;
-            } else {
-                modalStatsResult.innerHTML = `⏱️ Tempo Esgotado (60s)<br>📚 Itens Lidos: ${completedCount} de ${list.length}`;
+    function closeModal() {
+        document.getElementById('resultModal').style.display = 'none';
+        resetGame();
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowRight' || e.code === 'Space') {
+            e.preventDefault();
+            if (document.getElementById('gameplayScreen').style.display !== 'none') {
+                if (!isPlaying && timer > 0 && timer === 60) {
+                    startGame();
+                } else if (isPlaying) {
+                    nextWord();
+                }
             }
-
-            endModal.style.display = "flex";
         }
+    });
+</script>
 
-        function closeModal() {
-            endModal.style.display = "none";
-            resetProgress();
-        }
 
-        function resetProgress() {
-            clearInterval(timerInterval);
-            stopInstrumentalMusic();
-            isRunning = false;
-            isPaused = false;
-            timer = 60;
-            timeElapsed = 0;
-            timerDisplay.textContent = "60s";
-            completedCount = 0;
-            scoreDisplay.textContent = completedCount;
-            btnStart.textContent = "▶ Iniciar";
-            btnStart.disabled = false;
-            btnPause.disabled = true;
-            btnPause.textContent = "⏸ Pausar";
-            currentIndex = 0;
-            updateView();
-        }
-
-        wordDisplay.addEventListener('click', () => {
-            if (isRunning && !isPaused) {
-                nextItem();
-            }
-        });
-
-        window.addEventListener('keydown', (e) => {
-            if ((e.key === 'ArrowRight' || e.key === ' ') && isRunning && !isPaused) {
-                e.preventDefault();
-                nextItem();
-            } else if (e.key === 'ArrowLeft' && isRunning && !isPaused) {
-                e.preventDefault();
-                prevItem();
-            }
-        });
-
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Escuro';
-        });
-
-        document.getElementById('fontInc').addEventListener('click', () => {
-            fontSizeScale += 0.1;
-            wordDisplay.style.fontSize = `calc(clamp(2rem, 5vw, 3.2rem) * ${fontSizeScale})`;
-        });
-
-        document.getElementById('fontDec').addEventListener('click', () => {
-            if (fontSizeScale > 0.7) {
-                fontSizeScale -= 0.1;
-                wordDisplay.style.fontSize = `calc(clamp(2rem, 5vw, 3.2rem) * ${fontSizeScale})`;
-            }
-        });
-
-        updateView();
-    </script>
-</body>
-</html>
+</body></html>
